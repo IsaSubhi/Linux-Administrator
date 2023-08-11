@@ -1,0 +1,123 @@
+# 1. Show all the environment variables
+printenv
+# or:
+env
+
+# 2. Show only the PATH environment variable
+printenv | grep PATH
+
+# 3. Add your home directory to the PATH environment variable (make sure you didn’t erase all the other path’s)
+PATH="$PATH:$HOME"
+# or for higher priority:
+PATH="$HOME:$PATH"
+# also it would be better to place this line
+# inside .bashrc or .profile to make it permanent
+
+# 4. create a shell variable “version” and assign to it the your current Linux version
+# we can get the linux kernel version using uname with "-r" flag
+# so using $() to expand for command output we can write:
+version=$(uname -r)
+# or we can use the older `` (but we should prefer $() )
+version=`uname -r
+
+# 5. create a shell variable “tologs” and assign to it the the path to the Logs directory (/home/$(user_name/Logs) alias
+tologs="$HOME/logs/"
+
+# 6. Print the list of aliases
+alias
+
+# 7. Create an aliases for ls –l and ls -a
+alias lsl='ls -l'
+alias lsa='ls -a'
+
+# 8. Using alias create a shortcut to directory Docs (/home/$(user_name/ Docs)
+alias docs='cd ~/docs'
+#alternatively we use a variable:
+DOCS='$HOME/docs/'
+
+# 9. Erase the alias you just made.
+unalias docs
+
+# 10.Erase all aliases.
+unalias -a
+
+# 11.Where is the gnu compiler located?
+which gcc
+
+# 12.The listing command ll, where is it located?
+type ll
+
+# 13.Where is a.txt located?
+locate a.txt
+find ~ -name "a.txt"
+
+# 14. What is the size (on disk) of error2.log?
+du error2.log -h
+
+# 15. What is the real size of error2.log?
+du error2.log --apparent-size -h
+# or:
+ls -l -h error2.log
+
+# 16. print all sizes (on disk) of files in Docs directory
+du -a -h docs
+# -a for showing all files (not just directories)
+
+# 17. What is the sum of disk usage of all the files in the Docs and Logs directories?
+du -s -h docs logs
+
+# 18. Print the disk usage and free space for the file-system containing the Logs directory.
+df logs -h
+
+# 19.
+# a. Create a directory named Compressed in your home directory.
+mkdir ~/Compressed 
+# b. Find a file that is at list 10Mbytes in size (Search for it in all the volume).
+find / -size +9M
+find / -size +9M | head -n 1
+# c. Copy it to the Compressed Directory twice (under 2 different names).
+x=$(find / -size +9M | head -n 1)
+cp "$x" ~/Compressed/file1
+cp "$x" ~/Compressed/file2
+# d. Compress it once using the gzip command
+gzip -k "$x"
+# e. Compress it again using the bzip2 command
+bzip2 -k "$x"
+gzip  ~/Compressed/file1
+bzip2 ~/Compressed/file2
+# f. Compare the output files, which file is more compressed?
+ll "$x".*
+# g. De-compress the 2 zipped files and compare them once again, are they equal is size?
+gunzip ~/Compressed/file1.gz
+bunzip2 ~/Compressed/file2.bz2
+ll file1 file2
+diff file1 file2
+echo $?
+# should print 0
+
+# 20. Create a file containing the file integrity signature for all the files in the Logs and Docs directories.
+md5sum ~/docs ~/logs > checksum.md5
+
+# 21. Archive the Logs and Docs directories in your home directory into a file called my_home_dir.tar.
+tar -cf ~/my_home_dir.tar ~/docs ~/logs
+
+# 22. Compress the tarred file using bzip2 and gzip and copy the compressed files to the compressed directory.
+gzip  -k ~/my_home_dir.tar
+bzip2 -k ~/my_home_dir.tar
+cp ~/my_home_dir.tar.* ~/Compressed
+
+# 23. Test the integrity for the files a.txt and error1.log.
+md5sum -c checksum.md5
+grep a.txt checksum.md5 | md5sum -c
+grep error1.log checksum.md5 | md5sum -c
+
+# 24. Decompress the 2 files in the compressed directory.
+gunzip  ~/Compressed/my_home_dir.tar.gz
+bunzip2 ~/Compressed/my_home_dir.tar.bz2
+
+# 25. Extract the directories from the archive.
+tar -xf ~/Compressed/my_home_dir.tar docs/ logs/
+
+# 26. Verify the integrity of the extracted files.
+cd ~/Compressed
+md5sum -c ~/checksum.md5

@@ -1,0 +1,11 @@
+#make sure both computers are on the same netmask:
+HOST1: sudo ifconfig eth0 192.168.0.120/24
+HOST2: sudo ifconfig eth0 192.168.0.121/24
+
+#check the connection with ping 
+HOST1: ping 192.168.0.121
+
+#connect with ssh (assume HOST2 username is host2):
+HOST1: ssh host2@192.168.0.121
+
+#then enter password and connect

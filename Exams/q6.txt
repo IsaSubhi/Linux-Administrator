@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#simple solution
+rm $(grep -L "#include" *.c)
+
+#recursive solution (doesn't limit to *.c files only)
+rm $(grep -rL "#include" .)
+
+#solution with xargs (send input as arguments)
+grep -L "#include" *.c | xargs rm
+
+#solution with xargs that handles files names with spaces
+grep -ZL "#include" *.c | xargs -0 rm
+
+
+

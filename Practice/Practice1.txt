@@ -1,0 +1,70 @@
+# 1. What Shells are used in Linux?
+bash: Bourne Again Shell is the default for most of the Linux distributions
+ksh: Korn Shell is a high-level programming language shell
+csh: C Shell follows C like syntax and provides spelling correction and Job Control
+zsh: Z Shell provides some unique features such as filename generation, startup files, login/logout watching, closing comments etc.
+fish: Friendly Interactive Shell provides some special features like web-based configuration, auto-suggestions, fully scriptable with clean scripts
+
+# 2. How to identify which shell you are using?
+echo $SHELL
+
+# 3. What is the pwd command?
+The pwd command is short for print working directory command.
+
+# 4. Explain file permission in Linux.
+Read: Allows a user to open and read the file
+Write: Allows a user to open and modify the file
+Execute: Allows a user to run the file.
+
+# 5. What is grep command?
+Grep stands for Global Regular Expression Print. The grep command is used to search for a text in a file by pattern matching based on regular expression.
+
+# 6. If you want to list the entries that start has the character ‘n’, then the command would be ?
+cat linux.txt | grep n
+
+# 7. Explain the ‘ls’ command in Linux .
+The ls command is used to list the files in a specified directory.
+
+# 8. Explain how you can create a folder using Terminal?
+To create a folder, you have to use command mkdir.It will be something like these: ~$mkdir Guru99
+
+# 9. How to copy a file in Linux?
+You can use the cp command to copy a file in Linux. The general syntax is: cp <source> <destination>
+
+# 10. Write a command that will display all .txt files, including its individual permission.
+ls -al *.txt
+
+# 11. How to rename a file in Linux?
+mv <oldname> <newname>
+
+# 12. Which command allows for moving one level up in Linux directory tree?
+cd..
+
+# 13. Which command creates an empty file if it does not exist?
+touch
+
+# 14. What is the command to count the number of characters in a file?
+wc
+
+# 15. Assume that your current working directory is '/tmp' and your home directory is '/home/rtg'. Which of the below commands will copy all the content of '/tmp/test/' to a 'test' subdirectory of your home directory?
+cp -r ./test ~
+
+# 16. One advantage of hard links over symbolic links is:
+A hard link does not become disconnected from the
+underlying file if the file is moved.
+
+# 17. Which of the following commands can be used to assure that a
+file 'myfile' exists?
+B. touch myfile
+
+#18. Suppose you have created a new application 'myapp', and
+copied it to the directory '/usr/local/bin'. You would like all the
+users of the system to be able to run your application. Which of the
+following command lines would allow the appropriate access?
+A. chmod o+x /usr/local/bin/myapp
+
+#19.Suppose you want to sort the output in the given file:
+ # 1. What command will you execute to do this?
+   cat contacts.txt | sort
+ # 2. What command would you execute to sort the names in reverse?
+   cat contacts.txt | sort -r

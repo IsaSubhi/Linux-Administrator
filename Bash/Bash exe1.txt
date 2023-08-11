@@ -1,0 +1,148 @@
+# 1. Ask the user for a directory input and its output will be the size of the directory the user entered.
+echo -n "Enter your directory: "
+read -r x
+du -sh "$x"
+
+# 2. Write a file/directory status evaluation script. That is, if it is a normal file, a directory, readable, writable, executable/searchable. If it is not one of these things, it probably doesn't exist, so print that it doesn't exist.
+# test-file: Evaluate the status of a file
+echo "Hey what's the File/Directory name (using the absolute path)?"
+read FILE
+if [ -e "$FILE" ]; then
+if [ -f "$FILE" ]; then
+echo "$FILE is a regular file."
+fi
+if [ -d "$FILE" ]; then
+echo "$FILE is a directory."
+fi
+if [ -r "$FILE" ]; then
+echo "$FILE is readable."
+fi
+if [ -w "$FILE" ]; then
+echo "$FILE is writable."
+fi
+if [ -x "$FILE" ]; then
+echo "$FILE is executable/searchable."
+fi
+else
+echo "$FILE does not exist"
+exit 1
+fi
+
+# 3. create unique file/folder automatically with date and time stamp.
+echo "Hello $USER"
+uptime >> "$(date)".txt
+echo "Your File is being saved to $(pwd)"
+
+# 4. print out the line number of each file in current directory
+wc -l ./*
+
+# 5. move up a directory in shell script.
+LEVEL=$1
+for ((i = 0; i < LEVEL; i++)); do
+echo $i
+CDIR=../$CDIR
+done
+cd $CDIR
+echo "You are in: "$PWD
+sh=$(which $SHELL)
+exec $sh
+
+# 6. Create a file and put text in it with capital letters, then write a script that converts the file you gave as a parameter (doesn't have to be the specific file you created at the beginning) to lowercase letters and save its output into a new file called small.txt. Hint: check man tr
+echo -n "Enter File Name: "
+read -r file
+if [ ! -f "$file" ]; then
+echo "Filename $file does not exists"
+exit 1
+fi
+tr '[:upper:]' '[:lower:]' < "$file" >> small.txt
+
+# 7. A script to calculate two numbers with case.
+ # 1. Ask the user to enter 2 numbers.
+ # 2. Ask the user what operation he wants to perform, that is, addition, subtraction, multiplication or division.
+ # 3. Create a case statement
+ # 4. Print the result.
+# Taking user input:
+echo "Enter two numbers: "
+read a
+read b
+#input type of operation
+echo "Enter your choice: "
+echo "1. Addition"
+echo "2. Substraction"
+echo "3. Multiplication"
+echo "4. Division"
+read ch
+#Acting on the user input
+case $ch in
+1) res=`echo $a + $b | bc`
+;;
+2) res=`echo $a - $b | bc`
+;;
+3) res=`echo $a \* $b | bc`
+;;
+4) res=`echo "scale=2; $a / $b" | bc`
+;;
+esac
+#Printing result
+echo "Result: $res"
+
+# 8. Do the same thing you did above only now with a while loop.
+# Take two numbers:
+echo "Enter a number"
+read n1
+echo "Enter a number"
+read n2
+# Declare an infinite loop
+while true
+do#
+Display the menu
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+echo "5. Exit"
+echo -n "Select any number from [1-5]:"
+read input
+# Perform the operation based on the selected value
+if [[ "$input" -eq "1" ]]
+then
+((result=n1+n2))
+elif [[ "$input" -eq "2" ]]
+then
+((result=n1-n2))
+elif [[ "$input" -eq "3" ]]
+then
+((result=$n1*$n2))
+elif [[ "$input" -eq "4" ]]
+then
+((result=$n1/$n2))
+elif [[ "$input" -eq "5" ]]
+then
+exit 0
+else
+echo "Invalid input"
+fi
+echo "The result is $result"
+done
+
+# 9. Write a bash script which will take a single filename as a command line input and print the file with line numbers as a prefix.
+grep -h -n “.” $1
+
+# 10. Use a for loop to find the longest word in the following list: lions, tigers, bears, flying_monkeys.
+longest_word= for i in lions tigers bears flying_monkeys; do
+if [ -z $longest_word ] || [ ${#i} -gt ${#longest_word} ]; then
+longest_word=$i
+fi
+done
+echo $longest_word
+
+# 11. Use while to create a loop that prints 1, 2, 4, and 5 to the Terminal (notice that 3 is skipped).
+k=1
+while [ $k -lt 6 ]; do
+if [ $k -eq 3 ]; then
+k=$(( $k + 1 ))
+continue
+fi
+echo $k
+k=$(( $k + 1 ))
+done

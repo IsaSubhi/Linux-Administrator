@@ -1,0 +1,13 @@
+hardlink:
+ * A hard link is a separate file that point to the original file's inode. 
+ * It's a different file from the original so deletingor moving the original file doesn't effect the hard link. 
+ * The hard link cannot be recognised as a link of the original file without checking inode (i.e. find -samefile)).
+ * faster, (potentialy less space)
+   
+softlink:
+ * A soft link is a copy of a file, it links to the files's name and path. It's used to reduse disk usage. 
+ * The link is lost if the original file is moved/deleted.
+ * can link to directories and other partitions/devices
+
+ls -l: can show the soft link type (l)
+

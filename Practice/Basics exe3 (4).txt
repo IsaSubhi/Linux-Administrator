@@ -1,0 +1,78 @@
+# 1. Lists all the users logged on the systemLists all the users logged on the system.
+users #or who
+
+# 2. Show Show what user youwhat user you areare logged aslogged as.
+whoami
+
+# 3. Which groupWhich groupss you belong to. 
+groups [optigroups [optional USER__NAMNAME]
+
+# 4. Create a user named $your_name, add him to the system group
+useradd –G group-name username
+
+# 5. Login as the user you created.
+sudo su/ su username
+
+# 6. a. Login in as root.
+     su
+ # b. Create a file c.txt under the Docs directory.
+   cd ~ username /Docs
+   touch c.tx t, vi c.txt, nano c.txt, gedit c.txt
+ # c. Logout as root (exit) to the previous l ogin name
+   exit
+ # d. Try to erase c.txt (try sudo )
+   rm c.txt
+   sudo rm c.txt
+
+# 7. Prints all the network interfaces available on your system.
+ifconfig a
+
+# 8. Shut down the interface eth0
+ifconfig eth0 down
+
+# 9. bring up interface eth0
+ifconfig eth0 up
+
+# 10. change the eth0 IP’s address to 192.168. 10.2 netmask 255.255.255.0
+ifconfig eth0 19 2 .168.10.2/24 or
+ifconfig eth0 192.168.10.2 netmask 255.255.255.0
+
+# 11. a. ping localhost (127.0.0.1)
+      ping localhost or ping 127.0.0.1
+ # b. ping yourself
+   ping 192.168.10.2
+ # c. ping walla.co.il
+   ping walla.co.il
+
+# 12. show the computers routing table
+route
+
+# 13. configure the routing table so you are able to ping walla.co.il
+route add d efault gw 192.168.X.1
+
+# 14. login to a remote computer using remote shell.
+ssh username@192.168.x.x (the ip of the
+
+# 15. copy the Docs directory from a remote computer to your own computer
+scp r username@192.168.x.x :/home/ Docs localhost
+
+# 16. Show the mounted file systems on your system.
+mount
+
+# 17. mount your diskon key as /mnt/disk on key
+mount /dev/sd x /mnt/disk_on_key
+
+# 18. format your disk on key using vfat 32
+mkfs.vfa t /dev/sd x
+
+# 19. show the messages that the Ethernet driver has written while loading
+dmesg | grep i eth
+
+# 20. Clear the ring buffer.
+dmesg c
+
+# 21. Show all system calls called when using the mkdir command.
+strace mkdir fol der
+
+# 22. List all the kernel modules on the system.
+lsmod

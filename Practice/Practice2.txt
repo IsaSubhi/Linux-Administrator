@@ -1,0 +1,47 @@
+# 1. Search the ls man page for the option that outputs object names in every directory beneath the current directory. What is that option? 
+ls -R
+
+# 2. Search the ls man page for the option that orders object names by size. What is that option?
+ls -s
+
+# 3. How do you view the documentation for the command ‘kill’ in the Linux terminal?
+man kill 
+
+# 4. show variables with the echo command to find your current hostname, username, shell, and home directories.
+echo $HOSTNAME
+echo $USER
+echo $SHELL
+echo $HOME
+
+# 5. list all processes running on your system with a full set of columns, while piping the output to the command "less".
+ps -ef | less
+
+# 6. list all processes running on the system and sort those processes by the name of the user running each process.
+ps -ef | sort -k 1
+
+# 7. If you wanted to execute a shell command in the background, which character would you put at the end of the command line?
+&
+
+# 8. What does the Linux “no” command do?
+Nothing; it doesn’t exist
+
+# 9. To access the value of an environment variable, we...
+add the dollar ($) symbol before the variable name 
+
+#10. To report the amount of free disk space available on all mounted file systems you use the command:
+df
+
+# 11. What is df -h command?
+List the free desk space table more friendly.
+
+# 12. What is df -i command?
+List inode information instead of size
+
+# 13. What is the Difference between su and su- ?
+su command let you login as another user in the current session, while su- command will let you login as root user.
+
+# 14. ‘mkdir -m 444 any’ will:
+Create a read-only directory named any
+
+# 15. command1 | command2 will?
+Output command1 wil be input of command2

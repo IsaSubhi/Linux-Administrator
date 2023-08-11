@@ -1,0 +1,56 @@
+# 1. Store the output of the command “hostname” in a variable and print your variable.
+myhostname=$HOSTNAME
+echo $myhostname
+
+# 2. Write a basic script that receives input from the user : file and checks if it is a running file, if not you will print that it is not a running file.
+read -p “Enter the file: “ file
+if [ -x “$file” ]
+then
+echo “You have permition to execute $file”
+else
+echo “You do Not have permissions to execute $file”
+fi
+
+# 3. Write a basic script that receives input from the user : file and checks if it is a regular file and if it is a more regular file it will print that the answer is correct and if not it will print that it is not a regular file.
+read -p “Enter the file: “ file
+if [ -f “$file” ]
+then
+echo “$file is a reguler file”
+else
+echo “$file is not a regular file”
+fi
+
+# 4. create a script that do :
+ # 1. When input is anything other than "admin", code prints "Access Denied" .
+ # 2. When input is "admin", code prints "Access Granted"
+read -p "Enter username: " name
+if [ $name == "admin" ]
+then
+echo "Access Granted"
+else
+echo "Access Denied"
+fi
+
+# 5. Create a script that takes two numbers and does the following:
+ # 1. When the first input is greater than the second input, the if statement is executed and prints who is greater than who.
+ # 2. When both inputs are equal, the elif statement is executed and prints that they are equal.
+ # 3. When the second input is greater than the first input, print that the second input is greater than the first input. echo  "Enter two numbers"
+read num1
+read num2
+if [ $num1 -gt $num2 ]
+then
+echo "$num1 is greater than $num2"
+elif [ $num1 -eq $num2 ]
+then
+echo "Both numbers are equal"
+else
+echo "$num2 is greater than $num1"
+fi
+
+# 6. Ask the user to enter his name and do the following 3 things (do it with case): If the user input is "admin", print: Access is granted with the message Welcome Admin. If the user input is "root", print: Access is granted with the message Welcome root. For all other inputs, print: access denied.
+read -p "Enter your name: " name
+case $name in 
+admin) echo "Access Granted! Welcome Admin";;
+root) echo "Access Granted! Welcome root";;
+*) echo "Access Denied" ;;
+esac

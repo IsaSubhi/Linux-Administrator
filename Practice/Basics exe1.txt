@@ -1,0 +1,111 @@
+# 1. Display all the files that end with log.
+ls *.log
+
+# 2. Display all the files that end with txt.
+ls *.txt
+
+# 3. Show the biggest files first
+ls -Sr *.log
+
+# 4. Go to the root-directory with a single command
+cd /
+
+# 5. Come back to the same directory you were before (single command)
+cd –
+
+# 6. Show the content of error1.log
+cat error1.log
+
+# 7. Add the content of a.txt to b.txt (don’t copy the file)
+cat a.txt >> b.txt
+
+# 8. create a new directory in /home/%user_name and copy all the structure to it
+cp -R /home/%user_name /home/%user_name_copy
+
+# 9. Delete the previous structure
+rm -R /home/%user_name_copy
+
+# 10. Create the file .hidden.txt in /home/%user_name , can u see it with ls?
+touch /home/%user_name/.hidden.txt
+ls -a /home/%user_name
+
+# 11. show all the lines in all the files in the structure ending with *.txt
+grep . -R --include="*.txt" /path/to/directory
+
+# 12. 
+# A) if u were to copy the structure to some other computer (Linux Based ofcourse J) how
+would u do it?
+scp -r /path/to/source_directory
+username@destination_host:/path/to/destination_directory
+# B)
+tar -cvzf - /path/to/source_directory | ssh username@destination_host 'tar -xvzf
+- -C /path/to/destination_directory'
+# C) 
+rsync -avz /path/to/source_directory
+username@destination_host:/path/to/destination_directory
+
+# 13. What is the current/working directory just by looking the prompt?
+user@localhost:~$
+
+# 14. If the prompt doesn't display your current directory, how would you print it?
+$ pwd
+
+# 15. List the content of your home directory using its absolute path in first then its relative
+path.
+$ ls /home/user
+$ ls ~/
+
+# 16. displaying hidden contents in your home directory (create some if needed).
+$ ls -a ~/
+$ mkdir ~/.hidden_dir
+$ touch ~/.hidden_file
+
+# 17. displaying hidden contents without "." and "..".
+$ ls -A ~/
+
+# 18. List the content of your home directory and its subdirectories.
+$ ls -R ~/
+
+# 19. Display your directory's content in a reverse order.
+$ ls | sort -r
+
+# 20. Display your directory's content by size.
+$ ls -lS
+
+# 21. Display your directory's content by time of creation.
+ls -lt --sort=ctime
+
+# 22. Try to determine if "File.txt" exists at a given directory.
+find /path/to/directory -name File.txt -print -quit | grep -q .
+
+# 23. Display all files in a given directory that contains the word "log" in thire name.
+ls /path/to/directory/*log*
+
+# 24. Search a word in any file.
+grep -R 'word' /path/to/directory
+
+# 25. Do the same for several files.
+grep -R 'word' /path/to/file1 /path/to/file2 /path/to/file3
+
+# 26. Search a string that contains spaces in any file.
+grep -R 'string with spaces' /path/to/directory
+grep -R "string with 'single quotes'" /path/to/directory
+
+# 27. Search a string while ignoring case sensitive.
+grep -Ri 'string' /path/to/directory
+
+# 28. Search a string matching only whole word.
+grep -Rw 'word' /path/to/directory
+
+# 29. Search a string matching only whole line.
+grep -Rx 'line' /path/to/directory
+
+# 30. Display the line number of your search.
+grep -Rn 'string' /path/to/directory
+
+# 31. Search in a spesific directory in which file does the word "test" appears
+grep -R 'test' /path/to/directory
+
+# 32. Create hard link and soft link from the same file, difference between them?
+ln original_file hard_link
+ln -s original_file symbolic_link

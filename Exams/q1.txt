@@ -1,0 +1,6 @@
+the command ls -l file0[124] will list information
+of any of file01 file02 file04 that exist
+
+(if none exists tries to show file0[124]
+ will give error if it doesn't exists)
+ 
